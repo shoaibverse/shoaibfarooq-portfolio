@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600"><defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1C1713"/><stop offset="1" stop-color="#14100D"/></linearGradient>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2B14C"/><stop offset="1" stop-color="#F2907B"/></linearGradient>
+<radialGradient id="glow" cx="0.7" cy="0.25" r="0.7"><stop offset="0" stop-color="#E39A2A" stop-opacity="0.35"/><stop offset="1" stop-color="#E39A2A" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="960" height="600" fill="url(#bg)"/><rect width="960" height="600" fill="url(#glow)"/>
+<g font-family="monospace" font-size="20">
+<rect x="90" y="90" width="520" height="420" rx="18" fill="#171310" stroke="#3A3027" stroke-width="2"/>
+<circle cx="120" cy="122" r="7" fill="#F87171"/><circle cx="144" cy="122" r="7" fill="#F6B94A"/><circle cx="168" cy="122" r="7" fill="#9DBB8B"/>
+<text x="120" y="190" fill="#9A8B79">$ scan --target api.example.com</text>
+<text x="120" y="236" fill="#CDBFAE">GET  /v1/users</text><text x="440" y="236" fill="#9DBB8B">200 documented</text>
+<text x="120" y="276" fill="#CDBFAE">GET  /v1/orders</text><text x="440" y="276" fill="#9DBB8B">200 documented</text>
+<rect x="108" y="304" width="484" height="40" rx="8" fill="#F2B14C" fill-opacity="0.14"/>
+<text x="120" y="331" fill="#FBD9A0">GET  /internal/debug</text><text x="440" y="331" fill="#F2907B">shadow found</text>
+<rect x="108" y="352" width="484" height="40" rx="8" fill="#F2B14C" fill-opacity="0.14"/>
+<text x="120" y="379" fill="#FBD9A0">POST /admin/export</text><text x="440" y="379" fill="#F2907B">shadow found</text>
+<text x="120" y="440" fill="#9A8B79">12 threads  |  2 undocumented</text>
+</g>
+<g transform="translate(700 300)" stroke="url(#g)" stroke-width="3" fill="none">
+<circle r="46"/><circle r="92" stroke-opacity="0.55"/><circle r="138" stroke-opacity="0.28"/>
+<path d="M0 0 L96 -64" stroke-width="4"/><circle cx="96" cy="-64" r="9" fill="#F2907B" stroke="none"/>
+<circle cx="-70" cy="60" r="7" fill="#F2B14C" stroke="none"/><circle cx="30" cy="112" r="6" fill="#F2B14C" stroke="none"/>
+</g></svg>

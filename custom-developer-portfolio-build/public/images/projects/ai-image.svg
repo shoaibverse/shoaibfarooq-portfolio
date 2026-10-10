@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600"><defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1C1713"/><stop offset="1" stop-color="#14100D"/></linearGradient>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2B14C"/><stop offset="1" stop-color="#F2907B"/></linearGradient>
+<radialGradient id="glow" cx="0.7" cy="0.25" r="0.7"><stop offset="0" stop-color="#E39A2A" stop-opacity="0.35"/><stop offset="1" stop-color="#E39A2A" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="960" height="600" fill="url(#bg)"/><rect width="960" height="600" fill="url(#glow)"/>
+<rect x="120" y="90" width="720" height="420" rx="22" fill="#171310" stroke="#3A3027" stroke-width="2"/>
+<rect x="150" y="120" width="420" height="360" rx="14" fill="#1C1713" stroke="#3A3027"/>
+<path d="M150 400 L270 290 L350 360 L450 250 L570 380 L570 466 Q570 480 556 480 L164 480 Q150 480 150 466 Z" fill="url(#g)" fill-opacity="0.5"/>
+<circle cx="480" cy="190" r="34" fill="#F2907B" fill-opacity="0.85"/>
+<rect x="600" y="120" width="210" height="46" rx="10" fill="#261F19" stroke="#3A3027"/>
+<text x="618" y="150" font-family="monospace" font-size="17" fill="#CDBFAE">a calm city at dusk</text>
+<rect x="600" y="186" width="210" height="46" rx="10" fill="url(#g)"/>
+<text x="650" y="216" font-family="sans-serif" font-weight="700" font-size="18" fill="#1A1209">Generate</text>
+<rect x="600" y="256" width="210" height="10" rx="5" fill="#3A3027"/><rect x="600" y="256" width="140" height="10" rx="5" fill="#F2B14C"/>
+<rect x="600" y="288" width="210" height="10" rx="5" fill="#3A3027"/><rect x="600" y="288" width="96" height="10" rx="5" fill="#F2907B"/>
+<rect x="600" y="436" width="210" height="44" rx="10" fill="none" stroke="#F2B14C" stroke-width="2"/>
+<text x="652" y="465" font-family="sans-serif" font-weight="600" font-size="17" fill="#FBD9A0">Download</text>
+</svg>
