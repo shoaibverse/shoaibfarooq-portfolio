@@ -109,7 +109,7 @@ const Word: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   </motion.div>
 );
 
-const CinematicIntro: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
+const CinematicIntro: React.FC<{ onFinish: () => void; calm: boolean }> = ({ onFinish, calm }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const formStartRef = useRef(0);
   const doneRef = useRef(false);
@@ -158,6 +158,8 @@ const CinematicIntro: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
     if (!ctx) return;
 
     const cols = window.innerWidth < 700 ? 64 : 96;
+    // Calm mode (OS "reduce motion"): the hologram simply fades in. No fly-in, drift, flicker, glitch or scan sweep.
+    const formMs = calm ? 900 : FORM_MS;
     let W = 0;
     let H = 0;
     let ox = 0;
@@ -194,8 +196,8 @@ const CinematicIntro: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
       for (const d of dots) {
         d.tx = ox + (d.gx + 0.5) * cell;
         d.ty = oy + (d.gy + 0.5) * cell;
-        d.sx = d.tx + d.rx * W * 0.5;
-        d.sy = d.ty + d.ry * H * 0.5;
+        d.sx = calm ? d.tx : d.tx + d.rx * W * 0.5;
+        d.sy = calm ? d.ty : d.ty + d.ry * H * 0.5;
         d.r = cell * (0.16 + 0.36 * d.v);
       }
     };
@@ -257,9 +259,9 @@ const CinematicIntro: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
 
       const t0 = formStartRef.current;
       const elapsed = t0 ? now - t0 : -1;
-      const formed = elapsed > FORM_MS * 1.4;
+      const formed = elapsed > formMs * 1.4;
 
-      if (formed && now > nextGlitch) {
+      if (!calm && formed && now > nextGlitch) {
         gUntil = now + 110;
         gY = oy + Math.random() * dispH * 0.8;
         gH = 14 + Math.random() * 54;
@@ -267,16 +269,17 @@ const CinematicIntro: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
         nextGlitch = now + 1400 + Math.random() * 1800;
       }
       const glitching = now < gUntil;
-      const flicker = glitching ? 0.78 : 0.94 + 0.06 * Math.sin(now / 55);
+      const flicker = calm ? 1 : glitching ? 0.78 : 0.94 + 0.06 * Math.sin(now / 55);
       const scanY = oy + ((now / 2600) % 1) * dispH;
 
       let lastBucket = -1;
       for (let i = 0; i < dots.length; i++) {
         const d = dots[i];
         const drift = now / 1700 + d.ph;
-        const bx = d.sx + Math.cos(drift) * 6;
-        const by = d.sy + Math.sin(drift * 1.2) * 6;
-        const k = elapsed >= 0 ? easeInOut(elapsed / FORM_MS - d.delay) : 0;
+        const wob = calm ? 0 : 6;
+        const bx = d.sx + Math.cos(drift) * wob;
+        const by = d.sy + Math.sin(drift * 1.2) * wob;
+        const k = elapsed >= 0 ? easeInOut(elapsed / formMs - d.delay) : 0;
 
         let x = bx + (d.tx - bx) * k;
         let y = by + (d.ty - by) * k;
@@ -284,8 +287,8 @@ const CinematicIntro: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
         let r = d.r * (0.45 + 0.55 * k);
 
         if (k >= 1) {
-          x += Math.sin(now / 420 + d.ph * 3) * 0.5;
-          const dy = Math.abs(y - scanY);
+          if (!calm) x += Math.sin(now / 420 + d.ph * 3) * 0.5;
+          const dy = calm ? 99 : Math.abs(y - scanY);
           if (dy < 24) {
             const b = 1 - dy / 24;
             alpha += 0.55 * b;
@@ -305,7 +308,7 @@ const CinematicIntro: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
       }
 
       // The scan bar itself.
-      if (elapsed > FORM_MS) {
+      if (!calm && elapsed > FORM_MS) {
         const fade = Math.min(1, (elapsed - FORM_MS) / 600);
         const g = ctx.createLinearGradient(ox, 0, ox + dispW, 0);
         g.addColorStop(0, 'rgba(242,177,76,0)');
@@ -334,7 +337,7 @@ const CinematicIntro: React.FC<{ onFinish: () => void }> = ({ onFinish }) => {
       cancelAnimationFrame(raf);
       window.removeEventListener('resize', resize);
     };
-  }, []);
+  }, [calm]);
 
   return (
     <div className="absolute inset-0">
@@ -490,12 +493,13 @@ const QuickIntro: React.FC<{ onFinish: () => void; reduced: boolean }> = ({ onFi
 
 /**
  * Intro sequence: a dot and arc, the first name, then PORTFOLIO while a dot-matrix
- * hologram of the profile photo materialises behind it. Plays in full once per session;
- * repeat visits and reduced-motion users get a quick fade. The screen then lifts away like a curtain.
+ * hologram of the profile photo materialises behind it. Plays once per session (repeat visits get a quick fade).
+ * Users with OS "reduce motion" (common on phones with battery saver or "remove animations") get a calm
+ * version of the same intro, without flicker or fast movement. The screen then lifts away like a curtain.
  */
 export const Preloader: React.FC<PreloaderProps> = ({ onFinish }) => {
   const prefersReduced = useReducedMotion();
-  const [quick] = useState(() => Boolean(prefersReduced) || (PLAY_ONCE_PER_SESSION && readSeen()));
+  const [quick] = useState(() => PLAY_ONCE_PER_SESSION && readSeen());
 
   return (
     <motion.div
@@ -508,7 +512,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onFinish }) => {
       {quick ? (
         <QuickIntro onFinish={onFinish} reduced={Boolean(prefersReduced)} />
       ) : (
-        <CinematicIntro onFinish={onFinish} />
+        <CinematicIntro onFinish={onFinish} calm={Boolean(prefersReduced)} />
       )}
     </motion.div>
   );
