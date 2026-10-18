@@ -157,6 +157,26 @@ export const SKILLS_DATA: SkillItem[] = [
 
 export const PROJECTS_DATA: Project[] = [
   {
+    id: "nexora",
+    title: "Nexora",
+    shortDescription: "A workspace that brings tasks, notes and AI tools together in one place.",
+    fullDescription: "Nexora is a productivity workspace built around the idea of thinking clearly and building smarter. Instead of juggling separate apps, it puts your tasks, notes and AI tools side by side in a single interface, and it is deployed live on Vercel.",
+    category: "Web App",
+    tags: ["Productivity", "Task Management", "Notes", "AI Tools", "Vercel"],
+    image: "/images/projects/nexora.svg",
+    githubUrl: "https://github.com/shoaibverse",
+    liveDemoUrl: "https://nexora-umber-beta.vercel.app",
+    featured: true,
+    highlights: [
+      "Tasks, notes and AI tools combined in one workspace",
+      "One interface instead of switching between separate apps",
+      "Deployed live on Vercel and open to try"
+    ],
+    techDetails: {
+      architecture: "Single workspace that combines task management, note taking and AI tooling",
+    }
+  },
+  {
     id: "api-shadow-discovery",
     title: "API Shadow Discovery",
     shortDescription: "A Python tool that finds hidden and undocumented APIs for security testing and API inventory.",

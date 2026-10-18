@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600"><defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1C1713"/><stop offset="1" stop-color="#14100D"/></linearGradient>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2B14C"/><stop offset="1" stop-color="#F2907B"/></linearGradient>
+<radialGradient id="glow" cx="0.25" cy="0.2" r="0.7"><stop offset="0" stop-color="#E39A2A" stop-opacity="0.35"/><stop offset="1" stop-color="#E39A2A" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="960" height="600" fill="url(#bg)"/><rect width="960" height="600" fill="url(#glow)"/>
+<rect x="100" y="80" width="760" height="440" rx="22" fill="#171310" stroke="#3A3027" stroke-width="2"/>
+<rect x="100" y="80" width="170" height="440" rx="22" fill="#1C1713" stroke="#3A3027" stroke-width="2"/>
+<text x="128" y="128" font-family="sans-serif" font-weight="800" font-size="24" fill="url(#g)">Nexora</text>
+<rect x="124" y="164" width="122" height="34" rx="9" fill="#2B2113" stroke="#F2B14C" stroke-opacity="0.5"/>
+<text x="140" y="187" font-family="sans-serif" font-weight="600" font-size="15" fill="#FBD9A0">Tasks</text>
+<text x="140" y="233" font-family="sans-serif" font-size="15" fill="#9A8B79">Notes</text>
+<text x="140" y="273" font-family="sans-serif" font-size="15" fill="#9A8B79">AI Tools</text>
+<text x="300" y="128" font-family="sans-serif" font-weight="700" font-size="22" fill="#FBF3E6">Think clearly. Build smarter.</text>
+<rect x="300" y="152" width="320" height="64" rx="12" fill="#1C1713" stroke="#3A3027"/>
+<rect x="320" y="172" width="22" height="22" rx="6" fill="url(#g)"/><path d="M326 183 l5 5 9 -10" fill="none" stroke="#1A1209" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="358" y="176" width="190" height="12" rx="6" fill="#3A3027"/>
+<rect x="300" y="230" width="320" height="64" rx="12" fill="#1C1713" stroke="#3A3027"/>
+<rect x="320" y="250" width="22" height="22" rx="6" fill="none" stroke="#F2B14C" stroke-width="2"/>
+<rect x="358" y="254" width="230" height="12" rx="6" fill="#3A3027"/>
+<rect x="300" y="308" width="320" height="64" rx="12" fill="#1C1713" stroke="#3A3027"/>
+<rect x="320" y="328" width="22" height="22" rx="6" fill="none" stroke="#F2B14C" stroke-width="2"/>
+<rect x="358" y="332" width="150" height="12" rx="6" fill="#3A3027"/>
+<rect x="300" y="392" width="320" height="104" rx="12" fill="#261F19" stroke="#3A3027"/>
+<rect x="320" y="414" width="170" height="10" rx="5" fill="#CDBFAE" fill-opacity="0.55"/>
+<rect x="320" y="438" width="270" height="10" rx="5" fill="#3A3027"/>
+<rect x="320" y="462" width="220" height="10" rx="5" fill="#3A3027"/>
+<rect x="648" y="152" width="188" height="344" rx="14" fill="#1C1713" stroke="#3A3027"/>
+<circle cx="676" cy="184" r="12" fill="url(#g)"/>
+<text x="698" y="190" font-family="sans-serif" font-weight="700" font-size="15" fill="#FBD9A0">AI assistant</text>
+<rect x="666" y="220" width="152" height="52" rx="10" fill="#261F19" stroke="#3A3027"/>
+<rect x="678" y="236" width="110" height="9" rx="4.5" fill="#CDBFAE" fill-opacity="0.5"/><rect x="678" y="252" width="80" height="9" rx="4.5" fill="#3A3027"/>
+<rect x="666" y="288" width="152" height="70" rx="10" fill="url(#g)" fill-opacity="0.9"/>
+<rect x="678" y="304" width="124" height="9" rx="4.5" fill="#1A1209" fill-opacity="0.65"/><rect x="678" y="322" width="96" height="9" rx="4.5" fill="#1A1209" fill-opacity="0.45"/>
+<rect x="666" y="450" width="152" height="30" rx="15" fill="none" stroke="#F2B14C" stroke-width="1.5"/>
+</svg>
